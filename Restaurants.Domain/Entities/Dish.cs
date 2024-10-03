@@ -7,5 +7,6 @@
         public string Desciption { get; set; } = default!;
         public decimal Price { get; set; }
 
+        public int RestaurantId { get; set; }
     }
 }
