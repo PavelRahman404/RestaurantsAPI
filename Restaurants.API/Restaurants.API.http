@@ -7,3 +7,23 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 GET {{Restaurants.API_HostAddress}}/api/restaurants/1
 
 ###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "name": "Bella Italia",
+  "description": "Authentic Italian cuisine in a cozy atmosphere",
+  "category": "Italian",
+  "hasDelivery": true,
+  "contactEmail": "info@bellaitalia.com",
+  "contactNumber": "555-123-4567",
+  "city": "New York",
+  "street": "123 Main Street",
+  "postalCode": "10001"
+}
+
+###
+GET https://localhost:7173/api/Restaurants/3
+
+
