@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Restaurants.Domain.Entities;
+using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
@@ -14,7 +16,7 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
             logger.LogInformation("Updating restaurant with id: {RestarantId} with {@UpdatedRestaurant}" ,request.Id, request);
             var restaurant = await repositoriesRestaurants.GetByIdAsync(request.Id);
             if (restaurant == null)
-                return false;
+                throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
 
             mapper.Map(request, restaurant);
 
