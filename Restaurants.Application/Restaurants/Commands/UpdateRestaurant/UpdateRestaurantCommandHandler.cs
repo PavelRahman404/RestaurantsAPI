@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
 using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
@@ -12,7 +11,7 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
     {
         public async Task<bool> Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
         {
-            logger.LogInformation($"Updating restaurant with id: {request.Id}");
+            logger.LogInformation("Updating restaurant with id: {RestarantId} with {@UpdatedRestaurant}" ,request.Id, request);
             var restaurant = await repositoriesRestaurants.GetByIdAsync(request.Id);
             if (restaurant == null)
                 return false;
