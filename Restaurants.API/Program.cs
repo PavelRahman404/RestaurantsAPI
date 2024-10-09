@@ -2,8 +2,8 @@ using Restaurants.Infrastructure.Extensions;
 using Restaurants.Application.Extensions;
 using Restaurants.Infrastructure.Seeders;
 using Serilog;
-using Serilog.Events;
 using Restaurants.API.Middlewares;
+using Restaurants.Domain.Entities;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -37,6 +37,8 @@ app.UseMiddleware<RequestTimeLoggingMiddleware>();
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
+
+app.MapIdentityApi<User>();
 
 app.UseAuthorization();
 
